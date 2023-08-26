@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from "react";
+import PocketBase from "pocketbase";
+import Form from "../components/Form/Form";
+
 
 const Index = () => {
-  const [count, setCount] = useState<number>(0);
-
-  return <form></form>;
+  return (
+    <>
+      <Form />
+    </>
+  );
 };
 
 export default Index;
