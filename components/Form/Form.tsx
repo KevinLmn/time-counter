@@ -3,9 +3,10 @@ import React, { useState } from "react";
 type UserInfos = {
   email: string;
   password: string;
+  passwordConfirm?: string;
 };
 
-const UserLogInForm = ({ pb }: any) => {
+const Form = ({ pb, signUp }: any) => {
   const [userInfos, setUserInfos] = useState<UserInfos>({
     email: "",
     password: "",
@@ -20,20 +21,21 @@ const UserLogInForm = ({ pb }: any) => {
   ): Promise<void> => {
     e.preventDefault();
     console.log(userInfos);
-    const authData = await pb
-      .collection("users")
-      .authWithPassword("YOUR_USERNAME_OR_EMAIL", "YOUR_PASSWORD");
-
-    console.log(pb.authStore.isValid);
-    console.log(pb.authStore.token);
-    console.log(pb.authStore.model.id);
+    const record = await pb.collection("users").create(userInfos);
   };
+
   return (
     <form onSubmit={handleSubmit}>
       <p>Email</p>
       <input name="email" type="text" onChange={setValue} />
       <p>Password</p>
       <input name="password" type="password" onChange={setValue} />
+      {signUp && (
+        <div>
+          <p>Password Confirm</p>
+          <input name="passwordConfirm" type="password" onChange={setValue} />
+        </div>
+      )}
       <br />
       <br />
       <button type="submit">Submit</button>
@@ -41,4 +43,4 @@ const UserLogInForm = ({ pb }: any) => {
   );
 };
 
-export default UserLogInForm;
+export default Form;

@@ -1,11 +1,16 @@
 import Link from "next/link";
 import React from "react";
+import styles from "./UserHeader.module.scss";
 
 const UserHeader = () => {
   return (
-    <div>
-      <Link href="/SignIn">Sign In</Link>
-      <Link href="/SignUp">Sign Up</Link>
+    <div className={styles.box}>
+      <Link className={styles.link} href="/SignIn">
+        Sign In
+      </Link>
+      <Link className={styles.link} href="/SignUp">
+        Sign Up
+      </Link>
     </div>
   );
 };

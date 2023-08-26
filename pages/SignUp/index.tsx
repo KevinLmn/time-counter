@@ -1,14 +1,13 @@
-import UserSignInForm from "../../components/UserSignInForm/UserSignInForm";
 import React from "react";
 import PocketBase from "pocketbase";
-import TaskForm from "../../components/TaskForm/TaskForm";
+import Form from "../../components/Form/Form";
 
 const index = () => {
   const pb = new PocketBase("http://127.0.0.1:8090");
 
   return (
     <>
-      <UserSignInForm pb={pb} />
+      <Form signUp={true} pb={pb} />
     </>
   );
 };
