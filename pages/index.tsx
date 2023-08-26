@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import PocketBase from "pocketbase";
-import Form from "../components/Form/Form";
-
+import Link from "next/link";
+import styles from "./index.module.scss";
 
 const Index = () => {
   return (
-    <>
-      <Form />
-    </>
+    <div className={styles.fullPage}>
+      <Link href="/user">Go to user</Link>
+      
+    </div>
   );
 };
 
