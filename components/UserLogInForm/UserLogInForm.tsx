@@ -1,19 +1,14 @@
 import React, { useState } from "react";
-import PocketBase from "pocketbase";
 
 type UserInfos = {
   email: string;
   password: string;
-  passwordConfirm: string;
 };
 
-const Form = () => {
-  const pb = new PocketBase("http://127.0.0.1:8090");
-  const [count, setCount] = useState<number>(0);
+const UserLogInForm = ({ pb }: any) => {
   const [userInfos, setUserInfos] = useState<UserInfos>({
     email: "",
     password: "",
-    passwordConfirm: "",
   });
   const setValue = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setUserInfos({ ...userInfos, [e.target.name]: e.target.value });
@@ -25,17 +20,20 @@ const Form = () => {
   ): Promise<void> => {
     e.preventDefault();
     console.log(userInfos);
-    const record = await pb.collection("users").create(userInfos);
-  };
+    const authData = await pb
+      .collection("users")
+      .authWithPassword("YOUR_USERNAME_OR_EMAIL", "YOUR_PASSWORD");
 
+    console.log(pb.authStore.isValid);
+    console.log(pb.authStore.token);
+    console.log(pb.authStore.model.id);
+  };
   return (
     <form onSubmit={handleSubmit}>
       <p>Email</p>
       <input name="email" type="text" onChange={setValue} />
       <p>Password</p>
       <input name="password" type="password" onChange={setValue} />
-      <p>Password Confirm</p>
-      <input name="passwordConfirm" type="password" onChange={setValue} />
       <br />
       <br />
       <button type="submit">Submit</button>
@@ -43,4 +41,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default UserLogInForm;
