@@ -3,14 +3,14 @@ import styles from "./TaskForm.module.scss";
 
 type Task = {
   activity: string;
-  time: number;
+  time_spent: number;
   day: string;
 };
 
 const TaskForm = ({ pb }: any) => {
   const [task, setTask] = useState<Task>({
     activity: "",
-    time: 0,
+    time_spent: 0,
     day: "",
   });
 
@@ -37,7 +37,7 @@ const TaskForm = ({ pb }: any) => {
         </div>
         <div>
           <p>Time Won</p>
-          <input name="time" type="number" onChange={setValue} />
+          <input name="time_spent" type="number" onChange={setValue} />
         </div>
         <br />
         <br />
