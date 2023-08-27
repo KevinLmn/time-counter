@@ -16,17 +16,17 @@ const Index = () => {
   const [timerIsActive, setTimerIsActive] = useState<boolean>(false);
   const [leisureActivity, setLeisureActivity] = useState<string>("");
 
-  const getTimeSpent = (table) => {
+  const getTimeSpent = (table, property) => {
     return table.reduce((acc, curr) => {
-      return acc + curr.time_spent;
+      return acc + curr[property];
     }, 0);
   };
 
   const fetchData = async () => {
     const tasks = await pb.collection("tasks").getFullList({});
     const leisureActivities = await pb.collection("leisure").getFullList({});
-    const timeSpentOnTasks = getTimeSpent(tasks);
-    const timeSpentOnLeisure = getTimeSpent(leisureActivities);
+    const timeSpentOnTasks = getTimeSpent(tasks, "time_won");
+    const timeSpentOnLeisure = getTimeSpent(leisureActivities, "time_spent");
     setTimeOfLeisureLeft((timeSpentOnTasks - timeSpentOnLeisure) * 60);
   };
 
@@ -59,7 +59,6 @@ const Index = () => {
       <Navbar />
       <button onClick={handleClick}>Timer</button>
       <br />
-      <p>{timeOfLeisureLeft}</p>
       <CountdownTimer
         timeOfLeisureLeft={timeOfLeisureLeft}
         setTimeOfLeisureLeft={setTimeOfLeisureLeft}

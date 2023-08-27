@@ -14,7 +14,7 @@ const Index = () => {
       <Navbar />
       <div className={styles.ratioAndTaskForm}>
         <RatioSelector ratio={ratio} setRatio={setRatio} />
-        <TaskForm pb={pb} />
+        <TaskForm pb={pb} ratio={ratio} />
       </div>
     </div>
   );

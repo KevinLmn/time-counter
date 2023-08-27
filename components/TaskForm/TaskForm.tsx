@@ -7,7 +7,7 @@ type Task = {
   day: string;
 };
 
-const TaskForm = ({ pb }: any) => {
+const TaskForm = ({ pb, ratio }: any) => {
   const [task, setTask] = useState<Task>({
     activity: "",
     time_spent: 0,
@@ -23,9 +23,15 @@ const TaskForm = ({ pb }: any) => {
     e: React.FormEvent<HTMLFormElement>
   ): Promise<void> => {
     e.preventDefault();
-    const record = await pb
-      .collection("tasks")
-      .create({ ...task, day: new Date() });
+    if (ratio) {
+      const record = await pb.collection("tasks").create({
+        ...task,
+        time_won: Math.ceil((task.time_spent * ratio) / 100),
+        day: new Date(),
+      });
+    } else {
+      alert("Please enter a ratio");
+    }
   };
 
   return (
@@ -36,7 +42,7 @@ const TaskForm = ({ pb }: any) => {
           <input name="activity" type="text" onChange={setValue} />
         </div>
         <div>
-          <p>Time Won</p>
+          <p>Time Spent</p>
           <input name="time_spent" type="number" onChange={setValue} />
         </div>
         <br />

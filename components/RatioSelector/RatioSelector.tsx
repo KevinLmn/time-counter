@@ -12,21 +12,20 @@ const RatioSelector: React.FC<RatioSelectorProps> = ({
 }: RatioSelectorProps) => {
   return (
     <div className={styles.ratioForm}>
-      <p>Select Ratio</p>
+      <p>Select Ratio in %</p>
 
       <input
         name="ratio"
         type="number"
         onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-          setRatio(parseInt(event.target.value));
+          setRatio(Math.ceil(parseInt(event.target.value)));
         }}
       />
-      {ratio && (
-        <p>
-          60 minutes of activity will be equal to {Math.ceil(60 * ratio)} of
-          leisure
-        </p>
-      )}
+
+      <p>
+        60 minutes of activity will be equal to {Math.ceil((60 * ratio) / 100)}{" "}
+        minuts of leisure
+      </p>
     </div>
   );
 };
