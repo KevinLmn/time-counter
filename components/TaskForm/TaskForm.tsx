@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import styles from "./TaskForm.module.scss";
 
 type Task = {
   activity: string;
@@ -28,14 +29,20 @@ const TaskForm = ({ pb }: any) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <p>Activity</p>
-      <input name="activity" type="text" onChange={setValue} />
-      <p>Time Won</p>
-      <input name="time" type="number" onChange={setValue} />
-      <br />
-      <br />
-      <button type="submit">Submit</button>
+    <form className={styles.form} onSubmit={handleSubmit}>
+      <div>
+        <div>
+          <p>Activity</p>
+          <input name="activity" type="text" onChange={setValue} />
+        </div>
+        <div>
+          <p>Time Won</p>
+          <input name="time" type="number" onChange={setValue} />
+        </div>
+        <br />
+        <br />
+        <button type="submit">Submit</button>
+      </div>
     </form>
   );
 };
