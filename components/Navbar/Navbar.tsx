@@ -9,7 +9,7 @@ const Navbar = () => {
       <Link href="/">Main</Link>
       <Link href="/TaskList">List of tasks done</Link>
       <Link href="/LeisureActivityList">List of leisure activity done</Link>
-      <Link href="/AddTask"></Link>
+      <Link href="/AddTask">Add Task</Link>
       <UserHeader />
     </div>
   );
