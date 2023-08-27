@@ -7,6 +7,9 @@ const Navbar = () => {
   return (
     <div className={styles.navbar}>
       <Link href="/">Main</Link>
+      <Link href="/TaskList">List of tasks done</Link>
+      <Link href="/LeisureActivityList">List of leisure activity done</Link>
+      <Link href="/AddTask"></Link>
       <UserHeader />
     </div>
   );

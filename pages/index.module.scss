@@ -1,3 +1,10 @@
 .fullPage {
   height: 90vh;
 }
+
+.ratioAndTaskForm {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 100%;
+}
