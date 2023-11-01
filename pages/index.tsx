@@ -42,7 +42,7 @@ const Index = () => {
       const data = {
         activity: leisureActivity,
         time_spent: Math.ceil((initialTime - timeOfLeisureLeft) / 60),
-        day: new Date().toLocaleDateString(),
+        day: new Date(),
       };
 
       const record = await pb.collection("leisure").create(data);

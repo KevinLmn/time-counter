@@ -10,6 +10,7 @@ const Navbar = () => {
       <Link href="/TaskList">List of tasks done</Link>
       <Link href="/LeisureActivityList">List of leisure activity done</Link>
       <Link href="/AddTask">Add Task</Link>
+      <Link href="/MonkMode">Monk Mode</Link>
       <UserHeader />
     </div>
   );
