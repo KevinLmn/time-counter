@@ -6,23 +6,31 @@ import clsx from "clsx";
 
 import styles from "./MenuTab.module.scss";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 type MenuTabProps = {
   tab: string;
   href: string;
   isActive?: boolean;
+  setCurrentTab: (string) => void;
 };
 
-const MenuTab = ({ href, tab, isActive }: MenuTabProps): JSX.Element => {
+const MenuTab = ({
+  href,
+  tab,
+  isActive,
+  setCurrentTab,
+}: MenuTabProps): JSX.Element => {
   //   const { t } = useTranslation();
+  const router = useRouter();
+
+  const currentPath = router.pathname;
+  setCurrentTab(currentPath.split("/")[1]);
 
   return (
-    <div className={styles.sellerMenuDiv}>
+    <div className={styles.menuDiv}>
       <Link
-        className={clsx(
-          styles.sellerMenuChild,
-          isActive && styles.sellerMenuChildCurrent
-        )}
+        className={clsx(styles.menuChild, isActive && styles.menuChildCurrent)}
         href={href}
       >
         {/* {t(tab).toLocaleUpperCase()} */}

@@ -24,10 +24,9 @@ const index = () => {
     setTasks(newTasks);
   };
 
-  console.log(tasks);
-
   return (
     <div>
+      <Navbar />
       <table border={1}>
         <thead>
           <tr>

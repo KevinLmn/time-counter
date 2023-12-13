@@ -1,25 +1,26 @@
 @import "styles/stylesheet";
 
-.sellerMenuDiv {
+.menuDiv {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.sellerMenuChild {
+.menuChild {
   color: $greyDark;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+  text-decoration: none;
 }
 
-.sellerMenuChildCurrent {
+.menuChildCurrent {
   color: $black;
   pointer-events: none;
 }
 
-.sellerMenuChildCurrent::after {
+.menuChildCurrent::after {
   content: "";
   position: absolute;
   bottom: -70%;

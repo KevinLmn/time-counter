@@ -8,7 +8,6 @@
   font-size: $fontSizeMedium;
   justify-content: space-evenly;
   letter-spacing: 0.1em;
-  margin-top: getSpacing(5);
 
   @include isMobileOrTabletOrSmallDesktop {
     font-size: $fontSizeSmall;

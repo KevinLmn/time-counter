@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import UserHeader from "../UserHeader/UserHeader";
 import styles from "./Navbar.module.scss";
 import TabsMenu from "../TabsMenu/TabsMenu";
 
 const Navbar = () => {
+  const [currentTab, setCurrentTab] = useState("");
   enum MENU_TAB {
-    TASK_LIST = "TASK_LIST",
-    LEISURE_ACTIVITY_LIST = "LEISURE_ACTIVITY_LIST",
-    ADD_TASK = "ADD_TASK",
-    MONK_MODE = "MONK_MODE",
+    TASK_LIST = "TaskList",
+    LEISURE_ACTIVITY_LIST = "LeisureActivityList",
+    ADD_TASK = "AddTask",
+    MONK_MODE = "MonkMode",
   }
 
   const MenuTabs = {
@@ -34,7 +35,11 @@ const Navbar = () => {
       <div className={styles.navbar}>
         <UserHeader />
       </div>
-      <TabsMenu tabs={MenuTabs} currentTab={MENU_TAB.TASK_LIST} />
+      <TabsMenu
+        tabs={MenuTabs}
+        currentTab={currentTab}
+        setCurrentTab={setCurrentTab}
+      />
     </>
   );
 };
